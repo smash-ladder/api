@@ -1,0 +1,22 @@
+{
+  "name": "smash-back",
+  "version": "1.0.0",
+  "description": "API for smash ladder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smash-ladder/back.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/smash-ladder/back/issues"
+  },
+  "homepage": "https://github.com/smash-ladder/back#readme",
+  "devDependencies": {
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
