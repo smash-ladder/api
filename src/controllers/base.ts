@@ -5,10 +5,13 @@ export abstract class BaseController {
 
   async handle(ctx: Context) {
 
-    if ((this as any)[ctx.method] !== 'function') {
+    const method = ctx.method.toLowerCase();
+
+    if (typeof (this as any)[method] !== 'function') {
       throw new MethodNotAllowedError(`HTTP ${ctx.method} is not allowed this endpoint`);
     }
-    ctx.body = 'Hello world';
+
+    (this as any)[method](ctx);
 
   }
 

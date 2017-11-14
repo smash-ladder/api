@@ -14,7 +14,7 @@ async function errorMiddleware(ctx: Context, next: Function) {
     await next();
 
   } catch (err) {
-    
+
     const contentType = 'application/problem+json';
     let errorBody: {
       type: string,
