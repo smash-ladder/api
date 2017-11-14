@@ -1,9 +1,9 @@
 export class APIError extends Error {
 
-  title: string
-  status: number
-  type: string
-  detail: string
+  title: string;
+  status: number;
+  type: string;
+  detail: string;
 
   constructor(detail: string) {
     super();
@@ -31,7 +31,7 @@ export class UnauthorizedError extends APIError {
   title = 'Unauthorized';
   status = 401;
 
-};
+}
 
 /**
  * 403 Forbidden
@@ -42,7 +42,7 @@ export class ForbiddenError extends APIError {
   title = 'Forbidden';
   status = 403;
 
-};
+}
 
 /**
  * 404 Not Found
@@ -53,7 +53,7 @@ export class NotFoundError extends APIError {
   title = 'Not Found';
   status = 404;
 
-};
+}
 
 /**
  * 405 Method Not Allowed
@@ -64,7 +64,7 @@ export class MethodNotAllowedError extends APIError {
   title = 'Method Not Allowed';
   status = 405;
 
-};
+}
 
 /**
  * 406 Not Acceptable
@@ -75,7 +75,7 @@ export class NotAcceptableError extends APIError {
   title = 'Not Acceptable';
   status = 406;
 
-};
+}
 
 /**
  * 409 Conflict
@@ -86,7 +86,7 @@ export class ConflictError extends APIError {
   title = 'Conflict';
   status = 409;
 
-};
+}
 
 /**
  * 415 Unsupported Media Type
@@ -97,7 +97,7 @@ export class UnsupportedMediaTypeError extends APIError {
   title = 'The Content-Type you sent in the request body is not one that the server supports.';
   status = 415;
 
-};
+}
 
 /**
  * 422 Unprocessable Entity
@@ -108,7 +108,7 @@ export class UnprocessableEntity extends APIError {
   title = 'Unprocessable Entity';
   status = 422;
 
-};
+}
 
 /**
  * 500 Internal Server Error
@@ -119,7 +119,7 @@ export class InternalServerError extends APIError {
   title = 'Internal Server Error';
   status = 500;
 
-};
+}
 
 /**
  * 503 Service Unavailable
@@ -130,5 +130,5 @@ class ServiceUnavailableError extends APIError {
   status = 503;
   title = 'Service Unavailable';
 
-};
+}
 
