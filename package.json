@@ -4,7 +4,14 @@
   "description": "API for smash ladder",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && npm run watch",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "nodemon dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -16,7 +23,16 @@
   },
   "homepage": "https://github.com/smash-ladder/back#readme",
   "devDependencies": {
+    "@types/koa": "^2.0.40",
+    "@types/koa-router": "^7.0.24",
+    "@types/node": "^8.0.51",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0"
   }
 }
