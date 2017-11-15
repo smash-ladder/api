@@ -9,7 +9,7 @@ export class LadderController extends BaseController {
   get(ctx: Context) {
 
     const service = new LadderService();
-    ctx.body = model(service.getByKey(ctx.params.key));
+    ctx.body = model(service.getByKey(ctx.params.ladderKey));
 
   }
 

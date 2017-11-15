@@ -1,6 +1,6 @@
 export interface Player {
   name: string;
-  email: string;
+  userName: string;
   gravatar: string;
   favoriteCharacter: string;
 }

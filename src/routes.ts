@@ -3,6 +3,8 @@ import { LadderCollectionController } from './controllers/ladder-collection';
 import { LadderController } from './controllers/ladder';
 import { GameCollectionController } from './controllers/game-collection';
 import { GameController } from './controllers/game';
+import { RankingCollectionController } from './controllers/ranking-collection';
+import { RankingController } from './controllers/ranking';
 import { BaseController } from './controllers/base';
 import { Context } from 'koa';
 
@@ -15,7 +17,9 @@ let routes: Array<RouteDefinition>;
 routes = [
   [ '/', new HomeController()],
   [ '/ladders', new LadderCollectionController()],
-  [ '/ladders/:key', new LadderController()],
+  [ '/ladders/:ladderKey', new LadderController()],
+  [ '/ladders/:ladderKey/rankings', new RankingCollectionController()],
+  [ '/ladders/:ladderKey/rankings/:playerKey', new RankingController()],
   [ '/games', new GameCollectionController()],
   [ '/games/:key', new GameController()]
 ];

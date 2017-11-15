@@ -18,6 +18,8 @@ export function model(ladder: Ladder) {
   return {
     _links: {
       self: { href: '/ladders/' + ladder.key },
+      game: { href: '/games/' + ladder.game },
+      ranking: { href: '/ladders/' + ladder.key + '/rankings' }
     },
     title: ladder.title
   };
