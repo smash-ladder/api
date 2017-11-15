@@ -34,6 +34,7 @@ async function errorMiddleware(ctx: Context, next: Function) {
 
     } else {
 
+      console.log(err);
       errorBody = {
         type: 'https://api.yelpwifi.com/errors/internal-server-error',
         status: 500,

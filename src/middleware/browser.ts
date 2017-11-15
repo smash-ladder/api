@@ -99,13 +99,13 @@ const renderBrowser = function(ctx: Context) {
   const template = `<!DOCTYPE html>
 <html>
 <head>
-  <title>Yelp WiFi API</title>
+  <title>Yelp Smash API</title>
   <style>${assets.css}</style>
   <style>${assets.highlight}</style>
 </head>
 <body>
   <header>
-    <h1>API - ${path}</h1>
+    <h1>Smash Ladder API - ${path}</h1>
     <h2>${assets.logo}</h2>
 
   </header>
@@ -141,7 +141,7 @@ const renderJSON = function(json: any): string {
 
   if (json._embedded) {
 
-    embeddedHtml += '<h1>Embedded</1>';
+    embeddedHtml += '<h1>Embedded</h1>';
     embeddedHtml += renderEmbedded(json._embedded);
 
   }
@@ -246,8 +246,8 @@ const renderEmbedded = function(embedded: HalEmbeddedList) {
   for (const ii in embedded) {
     embeddedHtml += '<h2>' + escapeHtml(ii) + '</h2>';
 
-    const eItems: OneHalEmbedded[] = [];
-    eItems.concat(embedded[ii]);
+    let eItems: OneHalEmbedded[] = [];
+    eItems = eItems.concat(embedded[ii]);
 
     for (const jj in eItems) {
 

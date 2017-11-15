@@ -1,4 +1,16 @@
+import { CharacterCollectionController } from './controllers/character-collection';
+import { CharacterController } from './controllers/character';
+import { GameCollectionController } from './controllers/game-collection';
+import { GameController } from './controllers/game';
 import { HomeController } from './controllers/home';
+import { LadderCollectionController } from './controllers/ladder-collection';
+import { LadderController } from './controllers/ladder';
+import { PlayerCollectionController } from './controllers/player-collection';
+import { PlayerController } from './controllers/player';
+import { RankingCollectionController } from './controllers/ranking-collection';
+import { RankingController } from './controllers/ranking';
+import { StageCollectionController } from './controllers/stage-collection';
+import { StageController } from './controllers/stage';
 import { BaseController } from './controllers/base';
 import { Context } from 'koa';
 
@@ -9,7 +21,19 @@ type RouteDefinition = [string, BaseController];
 
 let routes: Array<RouteDefinition>;
 routes = [
-  [ '/', new HomeController()]
+  [ '/', new HomeController()],
+  [ '/ladders', new LadderCollectionController()],
+  [ '/ladders/:ladderKey', new LadderController()],
+  [ '/ladders/:ladderKey/rankings', new RankingCollectionController()],
+  [ '/ladders/:ladderKey/rankings/:userName', new RankingController()],
+  [ '/games', new GameCollectionController()],
+  [ '/games/:gameKey', new GameController()],
+  [ '/games/:gameKey/characters', new CharacterCollectionController()],
+  [ '/games/:gameKey/characters/:characterKey', new CharacterController()],
+  [ '/games/:gameKey/stages', new StageCollectionController()],
+  [ '/games/:gameKey/stages/:stageKey', new StageController()],
+  [ '/players', new PlayerCollectionController()],
+  [ '/players/:userName', new PlayerController()]
 ];
 
 for (const route of routes) {

@@ -1,4 +1,4 @@
-import { Context } from 'Koa';
+import { Context } from 'koa';
 import { MethodNotAllowedError } from '../errors';
 
 export abstract class BaseController {
