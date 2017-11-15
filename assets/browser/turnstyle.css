@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", "Ubuntu", "Roboto", sans-serif;
+  line-height: 1.5em;
+  color: #3E4758;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  color: white;
+  background: #23241f;
+  padding: 10px 10px 0 10px;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 20px;
+  flex: 1;
+}
+
+main h1, main h2, main h3 {
+    padding-bottom: 10px;
+}
+
+main {
+  padding: 30px;
+}
+
+pre code {
+  display: block;
+  font-family: Monaco, monospace;
+  font-size: 14px;
+  color: white;
+  background: #23241f;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+table {
+  border-collapse: collapse;
+
+}
+table td, table th {
+  border: 0;
+  padding: 5px;
+  margin: 0;
+  text-align: left;
+
+}
+
+table tr:nth-child(even) {
+  background: #f6f6f6;
+}
+table tr:nth-child(odd) {
+  background: #e0e0e0;
+}
+
+main h1 {
+  font-size: 24px;
+  color: #1E3748;
+  padding: 20px 0 10px 0;
+}
+main h2 {
+  font-size: 20px;
+  color: #3E4758;
+  padding: 20px 0 10px 0;
+}
+main h3 {
+  font-size: 16px;
+  color: #3E4758;
+  text-transform: uppercase;
+  padding: 20px 0 10px 0;
+}
+
+.mimeType {
+  border-radius: 3px;
+  background: #3E4758;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 70%;
+  line-height: 1em;
+  padding: 3px;
+}
+
+.mimeType.csv {
+  background: #589B00;
+}
+
+.mimeType.atom {
+  background: #FF7900;
+}
