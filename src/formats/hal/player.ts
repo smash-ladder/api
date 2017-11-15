@@ -16,7 +16,7 @@ export function collection(players: Player[]) {
 
 export function model(player: Player): any {
 
-  const result:any = {
+  const result: any = {
     _links: {
       self: { href: '/players/' + player.userName }
     },
