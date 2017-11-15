@@ -5,6 +5,8 @@ import { GameController } from './controllers/game';
 import { HomeController } from './controllers/home';
 import { LadderCollectionController } from './controllers/ladder-collection';
 import { LadderController } from './controllers/ladder';
+import { MatchCollectionController } from './controllers/match-collection';
+import { MatchController } from './controllers/match';
 import { PlayerCollectionController } from './controllers/player-collection';
 import { PlayerController } from './controllers/player';
 import { RankingCollectionController } from './controllers/ranking-collection';
@@ -26,6 +28,8 @@ routes = [
   [ '/ladders/:ladderKey', new LadderController()],
   [ '/ladders/:ladderKey/rankings', new RankingCollectionController()],
   [ '/ladders/:ladderKey/rankings/:userName', new RankingController()],
+  [ '/ladders/:ladderKey/matches', new MatchCollectionController()],
+  [ '/ladders/:ladderKey/matches/:matchId', new MatchController()],
   [ '/games', new GameCollectionController()],
   [ '/games/:gameKey', new GameController()],
   [ '/games/:gameKey/characters', new CharacterCollectionController()],

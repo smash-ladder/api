@@ -22,7 +22,8 @@ export function model(ladder: Ladder) {
         href: '/games/' + ladder.game.key,
         title: ladder.game.title
       },
-      ranking: { href: '/ladders/' + ladder.key + '/rankings' },
+      ranking: { href: '/ladders/' + ladder.key + '/rankings', title: 'Current player rankings' },
+      matches: { href: '/ladders/' + ladder.key + '/matches', title: 'Previous matches' },
       allowedStages: ladder.allowedStages.map( stage => {
         return {
           href: '/games/' + stage.game.key + '/stages/' + stage.key,
@@ -30,7 +31,8 @@ export function model(ladder: Ladder) {
         };
       })
     },
-    title: ladder.title
+    title: ladder.title,
+    lives: ladder.lives
   };
 
 }
