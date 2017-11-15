@@ -1,4 +1,8 @@
 import { HomeController } from './controllers/home';
+import { LadderCollectionController } from './controllers/ladder-collection';
+import { LadderController } from './controllers/ladder';
+import { GameCollectionController } from './controllers/game-collection';
+import { GameController } from './controllers/game';
 import { BaseController } from './controllers/base';
 import { Context } from 'koa';
 
@@ -9,7 +13,11 @@ type RouteDefinition = [string, BaseController];
 
 let routes: Array<RouteDefinition>;
 routes = [
-  [ '/', new HomeController()]
+  [ '/', new HomeController()],
+  [ '/ladders', new LadderCollectionController()],
+  [ '/ladders/:key', new LadderController()],
+  [ '/games', new GameCollectionController()],
+  [ '/games/:key', new GameController()]
 ];
 
 for (const route of routes) {
