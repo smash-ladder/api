@@ -9,6 +9,8 @@ import { PlayerCollectionController } from './controllers/player-collection';
 import { PlayerController } from './controllers/player';
 import { RankingCollectionController } from './controllers/ranking-collection';
 import { RankingController } from './controllers/ranking';
+import { StageCollectionController } from './controllers/stage-collection';
+import { StageController } from './controllers/stage';
 import { BaseController } from './controllers/base';
 import { Context } from 'koa';
 
@@ -28,6 +30,8 @@ routes = [
   [ '/games/:gameKey', new GameController()],
   [ '/games/:gameKey/characters', new CharacterCollectionController()],
   [ '/games/:gameKey/characters/:characterKey', new CharacterController()],
+  [ '/games/:gameKey/stages', new StageCollectionController()],
+  [ '/games/:gameKey/stages/:stageKey', new StageController()],
   [ '/players', new PlayerCollectionController()],
   [ '/players/:userName', new PlayerController()]
 ];
