@@ -18,6 +18,8 @@ export function model(game: Game): any {
   return {
     _links: {
       self: { href: '/games/' + game.key },
+      characters: { href: '/games/' + game.key + '/characters' },
+      collection: { href: '/games' },
     },
     title: game.title
   };

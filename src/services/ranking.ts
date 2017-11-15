@@ -27,12 +27,12 @@ export class RankingService {
 
     const ranking: Ranking[] = [
       {
-        ladder: 'sms64-1v1',
+        ladder: 'ssb64-1v1',
         player: 'evert',
         rank: 1
       },
       {
-        ladder: 'sms64-1v1',
+        ladder: 'ssb64-1v1',
         player: 'bschouw',
         rank: 1
       }

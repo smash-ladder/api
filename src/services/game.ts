@@ -17,9 +17,13 @@ export class GameService {
 
     const games: Game[] = [
       {
-        key: 'sms64',
-        title: 'Super Smash Bros 64'
-      }
+        key: 'ssb64',
+        title: 'Super Smash Bros. 64'
+      },
+      {
+        key: 'ssbm',
+        title: 'Super Smash Bros. Melee'
+      },
     ];
     return games;
 

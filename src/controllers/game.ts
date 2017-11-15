@@ -9,7 +9,7 @@ export class GameController extends BaseController {
   get(ctx: Context) {
 
     const service = new GameService();
-    ctx.body = model(service.getByKey(ctx.params.key));
+    ctx.body = model(service.getByKey(ctx.params.gameKey));
 
   }
 

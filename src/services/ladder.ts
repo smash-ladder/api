@@ -5,11 +5,11 @@ export class LadderService {
 
   getByKey(key: string): Ladder {
 
-    if (key === 'sms64-1v1') {
+    if (key === 'ssb64-1v1') {
       const ladder: Ladder = {
-        key: 'sms64-1v1',
+        key: 'ssb64-1v1',
         title: 'Super Smash Bros 64 1v1',
-        game: 'sms64'
+        game: 'ssb64'
       };
       return ladder;
     }
@@ -20,7 +20,7 @@ export class LadderService {
 
   getAll(): Ladder[] {
 
-    return [this.getByKey('sms64-1v1')];
+    return [this.getByKey('ssb64-1v1')];
 
   }
 
