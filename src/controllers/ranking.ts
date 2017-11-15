@@ -13,11 +13,11 @@ export class RankingController extends BaseController {
     const ladderService = new LadderService();
     const playerService = new PlayerService();
 
-    const service = new RankingService();
+    const ladder = ladderService.getByKey(ctx.params.ladderKey);
 
-    ctx.body = model(service.getByLadderAndPlayer(
-      ladderService.getByKey(ctx.params.ladderKey),
-      playerService.getByKey(ctx.params.playerKey)
+    ctx.body = model(ladder, rankingService.getByLadderAndPlayer(
+      ladder,
+      playerService.getByUserName(ctx.params.userName)
     ));
 
   }
