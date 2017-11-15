@@ -237,10 +237,8 @@ const renderLinksTable = function(links: HalLinkList): string {
 
 /**
  * This function renders items in the _embedded object.
- *
- * @returns {string}
  */
-const renderEmbedded = function(embedded: HalEmbeddedList) {
+const renderEmbedded = function(embedded: HalEmbeddedList): string {
 
   let embeddedHtml = '';
   for (const ii in embedded) {

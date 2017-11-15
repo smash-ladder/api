@@ -16,14 +16,21 @@ export function collection(players: Player[]) {
 
 export function model(player: Player): any {
 
-  return {
+  const result:any = {
     _links: {
-      self: { href: '/players/' + player.userName },
-      icon: { href: 'https://www.gravatar.com/avatar/' + crypto.createHash('md5').update(player.email).digest('hex') },
-      alternate: { href: 'mailto:' + player.email }
+      self: { href: '/players/' + player.userName }
     },
     name: player.name,
     userName: player.userName
   };
+  if (player.name) {
+    result.name = player.name;
+  }
+  if (player.email) {
+    result._links.alternate = { href: 'mailto:' + player.email };
+    result._links.icon = { href: 'https://www.gravatar.com/avatar/' + crypto.createHash('md5').update(player.email).digest('hex') };
+  }
+
+  return result;
 
 }
