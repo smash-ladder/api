@@ -1,7 +1,10 @@
 {
   "_links": {
-    "winner" : { "href": "/players/bkbarry" }, 
-    "loser" : { "href": "/players/mihok" }
+    "winner" : { "href": "/players/bkbarry" },
+    "loser" : { "href": "/players/mihok" },
+    "winnerCharacter" : { "href": "/games/ssb64/characters/kirby" },
+    "loserCharacter" : { "href": "/games/ssb64/characters/yoshi" },
+    "stage" : { "href": "/games/ssb64/stages/dream-land" }
   },
   "livesLeft": 2
 }

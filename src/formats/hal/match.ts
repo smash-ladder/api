@@ -21,8 +21,26 @@ export function model(match: Match) {
     _links: {
       self: { href: '/ladders/' + match.ladder.key + '/match/' + match.id },
       ladder: { href: '/ladders/' + match.ladder.key },
-      winner: { href: '/players/' + match.winner.userName },
-      loser: { href: '/players/' + match.loser.userName }
+      winner: {
+        href: '/players/' + match.winner.userName,
+        title: match.winner.name
+      },
+      loser: {
+        href: '/players/' + match.loser.userName,
+        title: match.loser.name
+      },
+      winnerCharacter: {
+        href: '/games/' + match.ladder.game.key + '/characters/' + match.winnerCharacter.key,
+        title: match.winnerCharacter.name
+      },
+      loserCharacter: {
+        href: '/games/' + match.ladder.game.key + '/characters/' + match.loserCharacter.key,
+        title: match.loserCharacter.name
+      },
+      stage: {
+        href: '/games/' + match.ladder.game.key + '/stages/' + match.stage.key,
+        title: match.stage.name
+      },
     },
     livesLeft: match.livesLeft,
     created: match.created

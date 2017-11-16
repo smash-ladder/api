@@ -1,8 +1,25 @@
 import { Game } from '../models/game';
+import { GameService } from './game';
 import { Stage } from '../models/stage';
 import { NotFoundError } from '../errors';
 
 export class StageService {
+
+  getByUri(uri: string): Stage {
+
+    const matches = uri.match(/\/games\/([^\/]+)\/stages\/([^\/]+)$/);
+    if (!matches) {
+      throw new Error('Unkown stage uri: ' + uri);
+    }
+
+    const gameService = new GameService();
+
+    return this.getByGameAndKey(
+      gameService.getByKey(matches[1]),
+      matches[2]
+    );
+
+  }
 
   getByGameAndKey(game: Game, key: string): Stage {
 

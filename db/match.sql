@@ -4,5 +4,8 @@ CREATE TABLE smash_match (
   ladder_id VARCHAR(30) NOT NULL,
   winner_id INT UNSIGNED NOT NULL,
   loser_id INT UNSIGNED NOT NULL,
-  livesLeft INT UNSIGNED NOT NULL
+  livesLeft INT UNSIGNED NOT NULL,
+  stage VARCHAR(50) NOT NULL,
+  winner_character VARCHAR(50) NOT NULL,
+  loser_character VARCHAR(50) NOT NULL
 )

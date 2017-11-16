@@ -7,7 +7,7 @@ export class GameService {
 
     const game = this.getAll().find( game => game.key === key);
     if (typeof game === 'undefined') {
-      throw new NotFoundError('No such game');
+      throw new NotFoundError('No such game: ' + key);
     }
     return game;
 

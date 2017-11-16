@@ -5,6 +5,8 @@ import { Match } from '../models/match';
 import { LadderService } from '../services/ladder';
 import { MatchService } from '../services/match';
 import { PlayerService } from '../services/player';
+import { CharacterService } from '../services/character';
+import { StageService } from '../services/stage';
 
 export class MatchCollectionController extends BaseController {
 
@@ -26,21 +28,29 @@ export class MatchCollectionController extends BaseController {
     const matchService = new MatchService();
     const ladderService = new LadderService();
     const playerService = new PlayerService();
+    const characterService = new CharacterService();
+    const stageService = new StageService();
 
     const ladder = await ladderService.getByKey( ctx.params.ladderKey );
     const winner = await playerService.getByUri( ctx.request.body._links.winner.href );
     const loser = await playerService.getByUri( ctx.request.body._links.loser.href );
+    const winnerCharacter = await characterService.getByUri( ctx.request.body._links.winnerCharacter.href );
+    const loserCharacter = await characterService.getByUri( ctx.request.body._links.loserCharacter.href );
+    const stage = await stageService.getByUri( ctx.request.body._links.stage.href );
 
     const match: Match = {
       id: undefined,
       created: undefined,
       ladder: ladder,
       winner: winner,
+      winnerCharacter: winnerCharacter,
+      loserCharacter: loserCharacter,
+      stage: stage,
       loser: loser,
       livesLeft: ctx.request.body.livesLeft
     };
 
-    matchService.save(match);
+    await matchService.save(match);
 
     ctx.status = 201;
     ctx.body = {};

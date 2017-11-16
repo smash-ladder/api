@@ -1,8 +1,25 @@
 import { Game } from '../models/game';
+import { GameService } from './game';
 import { Character } from '../models/character';
 import { NotFoundError } from '../errors';
 
 export class CharacterService {
+
+  getByUri(uri: string): Character {
+
+    const matches = uri.match(/\/games\/([^\/]+)\/characters\/([^\/]+)$/);
+    if (!matches) {
+      throw new Error('Unkown character uri: ' + uri);
+    }
+
+    const gameService = new GameService();
+
+    return this.getByGameAndKey(
+      gameService.getByKey(matches[1]),
+      matches[2]
+    );
+
+  }
 
   getByGameAndKey(game: Game, key: string): Character {
 
