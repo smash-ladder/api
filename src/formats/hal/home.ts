@@ -16,7 +16,8 @@ export function home() {
         title: 'List of players'
       }
     },
-    about: 'Welcome to the Yelp Smash Ladder API!'
+    about: 'Welcome to the Yelp Smash Ladder API!',
+    version: require('../../../package.json').version
   };
 
 }

@@ -6,6 +6,21 @@ import notfound from './middleware/notfound';
 
 const app = new Koa();
 
+
+app.use((ctx: Koa.Context, next: Function) => {
+
+  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,HEAD');
+
+  if (ctx.method === 'OPTIONS') {
+    ctx.status = 204;
+    return;
+  } else {
+    return next();
+  }
+
+
+});
 app.use(browser);
 app.use(problem);
 app.use(routes);
