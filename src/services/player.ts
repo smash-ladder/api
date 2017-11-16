@@ -11,7 +11,7 @@ export class PlayerService {
     );
     if (typeof player === 'undefined') {
       player = {
-        name: null,
+        name: undefined,
         userName: userName,
         email: userName + '@yelp.com'
       };
@@ -28,7 +28,7 @@ export class PlayerService {
 
     const players: Player[] = [];
 
-    for(const row of result[0]) {
+    for (const row of result[0]) {
 
       players.push({
         name: row.name,
@@ -48,9 +48,9 @@ export class PlayerService {
       INSERT INTO smash_player
       SET created = UNIX_TIMESTAMP(), modified = UNIX_TIMESTAMP(), ?
       ON DUPLICATE KEY UPDATE modified = UNIX_TIMESTAMP(), ?
-    `
+    `;
 
-    await db.query(query, [player, player])
+    await db.query(query, [player, player]);
 
   }
 
