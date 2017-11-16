@@ -57,7 +57,7 @@ export class MatchService {
       INSERT INTO smash_match SET
         created = UNIX_TIMESTAMP(),
         ?
-      `
+      `;
 
     const result = await db.query(query, [{
       ladder_id: match.ladder.key,
