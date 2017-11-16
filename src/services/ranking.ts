@@ -2,6 +2,7 @@ import { Ranking } from '../models/ranking';
 import { Ladder } from '../models/ladder';
 import { Player } from '../models/player';
 import { Match } from '../models/match';
+import { Character } from '../models/character';
 import { NotFoundError } from '../errors';
 import { MatchService } from './match';
 import db from '../db';
@@ -41,6 +42,12 @@ export class RankingService {
 
     const rankings: Ranking[] = [];
 
+    const characterStats: {
+      [s: string]: {
+        [s: string]: [Character, number]
+      }
+    } = {};
+
     for (const match of matches) {
 
       // Get current rankings
@@ -52,7 +59,8 @@ export class RankingService {
         rankings.push({
           ladder: ladder,
           player: match.loser,
-          rank: 0
+          rank: 0,
+          favoriteCharacter: undefined
         });
         loserPosition = rankings.length - 1;
       }
@@ -77,8 +85,31 @@ export class RankingService {
       rankings.splice(loserPosition, 0, {
         ladder: ladder,
         player: match.winner,
-        rank: 0
+        rank: 0,
+        favoriteCharacter: undefined
       });
+
+      if (!characterStats[match.winner.userName]) {
+        characterStats[match.winner.userName] = {};
+      }
+      if (!characterStats[match.loser.userName]) {
+        characterStats[match.loser.userName] = {};
+      }
+
+      if (!characterStats[match.winner.userName][match.winnerCharacter.key]) {
+        characterStats[match.winner.userName][match.winnerCharacter.key] = [
+          match.winnerCharacter,
+          0
+        ];
+      }
+      if (!characterStats[match.loser.userName][match.loserCharacter.key]) {
+        characterStats[match.loser.userName][match.loserCharacter.key] = [
+          match.loserCharacter,
+          0
+        ];
+      }
+      characterStats[match.winner.userName][match.winnerCharacter.key][1]++;
+      characterStats[match.loser.userName][match.loserCharacter.key][1]++;
 
     }
 
@@ -86,6 +117,19 @@ export class RankingService {
     // Reset the rank numbers
     for (const ranking of rankings) {
       ranking.rank = ++position;
+
+      let max = 0;
+      let fav = undefined;
+
+      for (const key in characterStats[ranking.player.userName]) {
+        const value = characterStats[ranking.player.userName][key];
+        if (value[1] > max) {
+          fav = value[0];
+          max = value[1];
+        }
+      }
+      ranking.favoriteCharacter = fav;
+
     }
     return rankings;
 
