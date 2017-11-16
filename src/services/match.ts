@@ -28,7 +28,7 @@ export class MatchService {
     const playerService = new PlayerService();
 
     const query = `
-      SELECT * FROM smash_match WHERE ladder_id = ?
+      SELECT * FROM smash_match WHERE ladder_id = ? ORDER BY created
     `;
 
     const result = await db.query(query, [ladder.key]);

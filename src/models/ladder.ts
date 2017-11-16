@@ -8,5 +8,7 @@ export interface Ladder {
   game: Game;
   allowedStages: Stage[];
   lives: number;
+  challengeRankingLimit: number;
+  algorithm: string;
 
 }

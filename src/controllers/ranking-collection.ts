@@ -7,7 +7,7 @@ import { RankingService } from '../services/ranking';
 
 export class RankingCollectionController extends BaseController {
 
-  get(ctx: Context) {
+  async get(ctx: Context) {
 
     const rankingService = new RankingService();
     const ladderService = new LadderService();
@@ -15,7 +15,7 @@ export class RankingCollectionController extends BaseController {
     const ladder = ladderService.getByKey( ctx.params.ladderKey );
     ctx.body = collection(
       ladder,
-      rankingService.getByLadder(ladder)
+      await rankingService.getByLadder(ladder)
     );
 
   }

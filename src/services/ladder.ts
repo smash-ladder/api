@@ -20,7 +20,9 @@ export class LadderService {
         title: 'Super Smash Bros 64 1v1',
         game: game,
         allowedStages: [dreamLand, yoshisIsland],
-        lives: 5
+        lives: 5,
+        challengeRankingLimit: 3,
+        algorithm: 'bump'
       };
       return ladder;
     }

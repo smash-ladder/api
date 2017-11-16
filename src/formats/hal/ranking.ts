@@ -19,9 +19,9 @@ export function model(ladder: Ladder, ranking: Ranking) {
 
   return {
     _links: {
-      self: { href: '/ladders/' + ladder.key + '/rankings/' + ranking.player },
+      self: { href: '/ladders/' + ladder.key + '/rankings/' + ranking.player.userName },
       ladder: { href: '/ladders/' + ladder.key },
-      player: { href: '/players/' + ranking.player }
+      player: { href: '/players/' + ranking.player.userName }
     },
     rank: ranking.rank
   };

@@ -32,7 +32,9 @@ export function model(ladder: Ladder) {
       })
     },
     title: ladder.title,
-    lives: ladder.lives
+    lives: ladder.lives,
+    challengeRankingLimit: ladder.challengeRankingLimit,
+    algorithm: ladder.algorithm
   };
 
 }

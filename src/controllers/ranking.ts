@@ -15,7 +15,7 @@ export class RankingController extends BaseController {
 
     const ladder = ladderService.getByKey(ctx.params.ladderKey);
 
-    ctx.body = model(ladder, rankingService.getByLadderAndPlayer(
+    ctx.body = model(ladder, await rankingService.getByLadderAndPlayer(
       ladder,
       await playerService.getByUserName(ctx.params.userName)
     ));
