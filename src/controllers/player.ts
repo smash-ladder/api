@@ -6,10 +6,10 @@ import { PlayerService } from '../services/player';
 
 export class PlayerController extends BaseController {
 
-  get(ctx: Context) {
+  async get(ctx: Context) {
 
     const service = new PlayerService();
-    ctx.body = model(service.getByUserName(ctx.params.userName));
+    ctx.body = model(await service.getByUserName(ctx.params.userName));
 
   }
 

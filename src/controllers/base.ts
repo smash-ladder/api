@@ -11,7 +11,7 @@ export abstract class BaseController {
       throw new MethodNotAllowedError(`HTTP ${ctx.method} is not allowed this endpoint`);
     }
 
-    (this as any)[method](ctx);
+    await (this as any)[method](ctx);
 
   }
 

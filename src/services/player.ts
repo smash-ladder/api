@@ -1,11 +1,12 @@
 import { Player } from '../models/player';
 import { NotFoundError } from '../errors';
+import db from '../db';
 
 export class PlayerService {
 
-  getByUserName(userName: string): Player {
+  async getByUserName(userName: string): Promise<Player> {
 
-    const player = this.getAll().find( player =>
+    const player = (await this.getAll()).find( player =>
       player.userName === userName
     );
     if (typeof player === 'undefined') {
@@ -15,7 +16,12 @@ export class PlayerService {
 
   }
 
-  getAll(): Player[] {
+  async getAll(): Promise<Player[]> {
+
+    const query = 'SELECT * FROM smash_player';
+    const result = await db.query(query);
+
+    console.log(result);
 
     const players: Player[] = [
       {

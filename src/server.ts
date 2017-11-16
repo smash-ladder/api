@@ -6,7 +6,6 @@ import notfound from './middleware/notfound';
 
 const app = new Koa();
 
-
 app.use((ctx: Koa.Context, next: Function) => {
 
   ctx.set('Access-Control-Allow-Origin', '*');

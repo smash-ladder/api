@@ -6,9 +6,9 @@ import { PlayerService } from './player';
 
 export class MatchService {
 
-  getByLadderAndId(ladder: Ladder, id: number): Match {
+  async getByLadderAndId(ladder: Ladder, id: number): Promise<Match> {
 
-    const match = this.getByLadder(ladder).find( match =>
+    const match = (await this.getByLadder(ladder)).find( match =>
       match.id === id
     );
     if (typeof match === 'undefined') {
@@ -18,7 +18,7 @@ export class MatchService {
 
   }
 
-  getByLadder(ladder: Ladder): Match[] {
+  async getByLadder(ladder: Ladder): Promise<Match[]> {
 
     if (ladder.key !== 'ssb64-1v1') {
       return [];
@@ -31,8 +31,8 @@ export class MatchService {
         id: 1,
         created: new Date(),
         ladder: ladder,
-        winner: playerService.getByUserName('evert'),
-        loser: playerService.getByUserName('bschouw'),
+        winner: await playerService.getByUserName('evert'),
+        loser: await playerService.getByUserName('bschouw'),
         livesLeft: 2
       }
 

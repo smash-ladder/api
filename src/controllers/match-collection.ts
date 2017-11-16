@@ -7,15 +7,15 @@ import { MatchService } from '../services/match';
 
 export class MatchCollectionController extends BaseController {
 
-  get(ctx: Context) {
+  async get(ctx: Context) {
 
     const matchService = new MatchService();
     const ladderService = new LadderService();
 
-    const ladder = ladderService.getByKey( ctx.params.ladderKey );
+    const ladder = await ladderService.getByKey( ctx.params.ladderKey );
     ctx.body = collection(
       ladder,
-      matchService.getByLadder(ladder)
+      await matchService.getByLadder(ladder)
     );
 
   }

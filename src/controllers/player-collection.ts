@@ -6,10 +6,10 @@ import { PlayerService } from '../services/player';
 
 export class PlayerCollectionController extends BaseController {
 
-  get(ctx: Context) {
+  async get(ctx: Context) {
 
     const service = new PlayerService();
-    ctx.body = collection(service.getAll());
+    ctx.body = collection(await service.getAll());
 
   }
 
