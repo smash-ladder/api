@@ -84,7 +84,7 @@ export class RankingService {
 
     let position = 0;
     // Reset the rank numbers
-    for(const ranking of rankings) {
+    for (const ranking of rankings) {
       ranking.rank = ++position;
     }
     return rankings;
