@@ -31,6 +31,10 @@ export function model(ladder: Ladder, ranking: Ranking) {
       favoriteCharacter: {
         href: '/games/' + ranking.favoriteCharacter.game.key + '/characters/' + ranking.favoriteCharacter.key,
         title: ranking.favoriteCharacter.name
+      },
+      allowedChallenges: {
+        href: '/ladders/' + ladder.key + '/rankings/' + ranking.player.userName + '/allowed-challenges',
+        title: 'List of people that this person may challenge'
       }
     },
     rank: ranking.rank

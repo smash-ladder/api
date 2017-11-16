@@ -1,3 +1,4 @@
+import { AllowedChallengesCollectionController } from './controllers/allowed-challenges-collection';
 import { CharacterCollectionController } from './controllers/character-collection';
 import { CharacterController } from './controllers/character';
 import { GameCollectionController } from './controllers/game-collection';
@@ -28,6 +29,7 @@ routes = [
   [ '/ladders/:ladderKey', new LadderController()],
   [ '/ladders/:ladderKey/rankings', new RankingCollectionController()],
   [ '/ladders/:ladderKey/rankings/:userName', new RankingController()],
+  [ '/ladders/:ladderKey/rankings/:userName/allowed-challenges', new AllowedChallengesCollectionController()],
   [ '/ladders/:ladderKey/matches', new MatchCollectionController()],
   [ '/ladders/:ladderKey/matches/:matchId', new MatchController()],
   [ '/games', new GameCollectionController()],

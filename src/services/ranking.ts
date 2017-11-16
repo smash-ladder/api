@@ -38,6 +38,20 @@ export class RankingService {
 
   }
 
+  async getAllowedChallenges(ladder: Ladder, player: Player) : Promise<Ranking[]> {
+
+    const rankings = await this.getByLadder(ladder);
+    const playerIndex = rankings.findIndex( (ranking) => ranking.player.id === player.id );
+    if (playerIndex === -1) {
+      return rankings.slice(-ladder.challengeRankingLimit);
+    } else {
+      let startIndex = playerIndex-ladder.challengeRankingLimit;
+      if (startIndex < 0) startIndex = 0;
+      return rankings.slice(startIndex, playerIndex);
+    }
+
+  }
+
   bumpSort(ladder: Ladder, matches: Match[]): Ranking[] {
 
     const rankings: Ranking[] = [];
