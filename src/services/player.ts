@@ -6,11 +6,16 @@ export class PlayerService {
 
   async getByUserName(userName: string): Promise<Player> {
 
-    const player = (await this.getAll()).find( player =>
+    let player = (await this.getAll()).find( player =>
       player.userName === userName
     );
     if (typeof player === 'undefined') {
-      throw new NotFoundError('Unknown player');
+      player = {
+        name: null,
+        userName: userName,
+        email: userName + '@yelp.com'
+      };
+      await this.save(player);
     }
     return player;
 
@@ -21,21 +26,31 @@ export class PlayerService {
     const query = 'SELECT * FROM smash_player';
     const result = await db.query(query);
 
-    console.log(result);
+    const players: Player[] = [];
 
-    const players: Player[] = [
-      {
-        name: 'Evert',
-        userName: 'evert',
-        email: 'evert@yelp.com'
-      },
-      {
-        name: 'Brendan',
-        userName: 'bschouw',
-        email: 'bschouw@yelp.com'
-      }
-    ];
+    for(const row of result[0]) {
+
+      players.push({
+        name: row.name,
+        userName: row.userName,
+        email: row.email
+      });
+
+    }
+
     return players;
+
+  }
+
+  async save(player: Player) {
+
+    const query = `
+      INSERT INTO smash_player
+      SET created = UNIX_TIMESTAMP(), modified = UNIX_TIMESTAMP(), ?
+      ON DUPLICATE KEY UPDATE modified = UNIX_TIMESTAMP(), ?
+    `
+
+    await db.query(query, [player, player])
 
   }
 
