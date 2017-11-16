@@ -15,3 +15,10 @@ docker-restart:
 	$(MAKE) docker-kill
 	$(MAKE) docker-rm
 	$(MAKE) docker-run
+
+run-local:
+	export MYSQL_USER=root
+	export MYSQL_PASS=
+	export MYSQL_DB=smash_ladder
+	export MYSQL_HOST=localhost
+	npm start

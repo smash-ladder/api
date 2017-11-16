@@ -44,7 +44,7 @@ async function errorMiddleware(ctx: Context, next: Function) {
 
     }
 
-    console.log(errorBody);
+    console.log(err);
 
     ctx.status = errorBody.status;
     ctx.body = errorBody;

@@ -11,12 +11,40 @@ export class PlayerService {
     );
     if (typeof player === 'undefined') {
       player = {
+        id: undefined,
         name: undefined,
         userName: userName,
         email: userName + '@yelp.com'
       };
       await this.save(player);
     }
+    return player;
+
+  }
+
+  async getByUri(uri: string): Promise<Player> {
+
+    // very lazy system, it just uses the last component of the uri
+    const userName = uri.match(/\/([^\/]+)$/)[1];
+    return this.getByUserName(userName);
+
+  }
+
+  async getById(id: number): Promise<Player> {
+
+    const query = 'SELECT * FROM smash_player WHERE id = ?';
+    const result = await db.query(query, [id]);
+
+    if (!result[0]) {
+      throw new Error('Player with id: ' + id + ' not found');
+    }
+
+    const player: Player = {
+      id: result[0][0].id,
+      name: result[0][0].name,
+      userName: result[0][0].userName,
+      email: result[0][0].email
+    };
     return player;
 
   }
@@ -31,6 +59,7 @@ export class PlayerService {
     for (const row of result[0]) {
 
       players.push({
+        id: row.id,
         name: row.name,
         userName: row.userName,
         email: row.email
@@ -50,7 +79,9 @@ export class PlayerService {
       ON DUPLICATE KEY UPDATE modified = UNIX_TIMESTAMP(), ?
     `;
 
-    await db.query(query, [player, player]);
+    const result = await db.query(query, [player, player]);
+
+    player.id = result[0].insertId;
 
   }
 

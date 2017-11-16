@@ -43,7 +43,7 @@ routes = [
 for (const route of routes) {
 
   const controller: BaseController = route[1];
-  router.get(route[0], ( ctx: Context, next: Function ) => {
+  router.all(route[0], ( ctx: Context, next: Function ) => {
     return controller.handle(ctx);
   });
 

@@ -1,0 +1,7 @@
+{
+  "_links": {
+    "winner" : { "href": "/players/bkbarry" }, 
+    "loser" : { "href": "/players/mihok" }
+  },
+  "livesLeft": 2
+}

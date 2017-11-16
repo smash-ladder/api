@@ -3,6 +3,7 @@ import routes from './routes';
 import problem from './middleware/problem';
 import browser from './middleware/browser';
 import notfound from './middleware/notfound';
+import * as bodyparser from 'koa-bodyparser';
 
 const app = new Koa();
 
@@ -22,9 +23,17 @@ app.use((ctx: Koa.Context, next: Function) => {
 
 
 });
+
 app.use(browser);
 app.use(problem);
+app.use(bodyparser());
 app.use(routes);
 app.use(notfound);
+
+app.on('error', (err) => {
+
+  console.log(err);
+
+});
 
 app.listen(3000);
