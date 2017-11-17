@@ -17,7 +17,7 @@ export function collection(ladder: Ladder, rankings: Ranking[]) {
 
 export function model(ladder: Ladder, ranking: Ranking) {
 
-  return {
+  const result = {
     _links: {
       self: { href: '/ladders/' + ladder.key + '/rankings/' + ranking.player.userName },
       ladder: {
@@ -28,10 +28,6 @@ export function model(ladder: Ladder, ranking: Ranking) {
         href: '/players/' + ranking.player.userName,
         title: ranking.player.name
       },
-      favoriteCharacter: {
-        href: '/games/' + ranking.favoriteCharacter.game.key + '/characters/' + ranking.favoriteCharacter.key,
-        title: ranking.favoriteCharacter.name
-      },
       allowedChallenges: {
         href: '/ladders/' + ladder.key + '/rankings/' + ranking.player.userName + '/allowed-challenges',
         title: 'List of people that this person may challenge'
@@ -39,5 +35,14 @@ export function model(ladder: Ladder, ranking: Ranking) {
     },
     rank: ranking.rank
   };
+
+  if (ranking.favoriteCharacter) {
+    result._links.favoriteCharacter = {
+      href: '/games/' + ranking.favoriteCharacter.game.key + '/characters/' + ranking.favoriteCharacter.key,
+      title: ranking.favoriteCharacter.name
+    };
+  }
+
+  return result;
 
 }

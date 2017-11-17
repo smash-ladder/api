@@ -15,7 +15,12 @@ export class RankingService {
       ranking.player.id === player.id
     );
     if (typeof ranking === 'undefined') {
-      throw new NotFoundError('No such ranking');
+      return {
+        ladder: ladder,
+        player: player,
+        rank: undefined,
+        favoriteCharacter: undefined
+      };
     }
     return ranking;
 
