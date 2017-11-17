@@ -33,7 +33,9 @@ export function model(ladder: Ladder, ranking: Ranking) {
         title: 'List of people that this person may challenge'
       }
     },
-    rank: ranking.rank
+    rank: ranking.rank,
+    wins: ranking.wins,
+    losses: ranking.losses
   };
 
   if (ranking.favoriteCharacter) {

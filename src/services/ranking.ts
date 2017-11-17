@@ -19,7 +19,9 @@ export class RankingService {
         ladder: ladder,
         player: player,
         rank: undefined,
-        favoriteCharacter: undefined
+        favoriteCharacter: undefined,
+        wins: 0,
+        losses: 0
       };
     }
     return ranking;
@@ -101,9 +103,13 @@ export class RankingService {
           ladder: ladder,
           player: match.loser,
           rank: 0,
-          favoriteCharacter: undefined
+          favoriteCharacter: undefined,
+          losses: 1,
+          wins: 0
         });
         loserPosition = rankings.length - 1;
+      } else {
+        rankings[loserPosition].losses++;
       }
 
       // Was the winner allowed to challenge the loser?
@@ -118,23 +124,35 @@ export class RankingService {
 
       }
 
+      let winnerRanking: Ranking;
+
       if (winnerPosition !== -1) {
         // No change
         if (winnerPosition < loserPosition) {
           continue;
         }
+
+        winnerRanking = rankings[winnerPosition];
+        winnerRanking.wins++;
+
         // remove winner from existing position
         rankings.splice(winnerPosition, 1);
+
+      } else {
+
+        winnerRanking = {
+          ladder: ladder,
+          player: match.winner,
+          rank: 0,
+          favoriteCharacter: undefined,
+          wins: 1,
+          losses: 0
+        };
 
       }
 
       // Insert the winner.
-      rankings.splice(loserPosition, 0, {
-        ladder: ladder,
-        player: match.winner,
-        rank: 0,
-        favoriteCharacter: undefined
-      });
+      rankings.splice(loserPosition, 0, winnerRanking);
 
     }
 

@@ -8,5 +8,7 @@ export interface Ranking {
   player: Player;
   rank: number;
   favoriteCharacter: Character;
+  wins: number;
+  losses: number;
 
 }
