@@ -69,6 +69,28 @@ export class RankingService {
 
     for (const match of matches) {
 
+      if (!characterStats[match.winner.userName]) {
+        characterStats[match.winner.userName] = {};
+      }
+      if (!characterStats[match.loser.userName]) {
+        characterStats[match.loser.userName] = {};
+      }
+
+      if (!characterStats[match.winner.userName][match.winnerCharacter.key]) {
+        characterStats[match.winner.userName][match.winnerCharacter.key] = [
+          match.winnerCharacter,
+          0
+        ];
+      }
+      if (!characterStats[match.loser.userName][match.loserCharacter.key]) {
+        characterStats[match.loser.userName][match.loserCharacter.key] = [
+          match.loserCharacter,
+          0
+        ];
+      }
+      characterStats[match.winner.userName][match.winnerCharacter.key][1]++;
+      characterStats[match.loser.userName][match.loserCharacter.key][1]++;
+
       // Get current rankings
       let loserPosition = rankings.findIndex( ranking => ranking.player.id === match.loser.id );
       const winnerPosition = rankings.findIndex( ranking => ranking.player.id === match.winner.id );
@@ -113,28 +135,6 @@ export class RankingService {
         rank: 0,
         favoriteCharacter: undefined
       });
-
-      if (!characterStats[match.winner.userName]) {
-        characterStats[match.winner.userName] = {};
-      }
-      if (!characterStats[match.loser.userName]) {
-        characterStats[match.loser.userName] = {};
-      }
-
-      if (!characterStats[match.winner.userName][match.winnerCharacter.key]) {
-        characterStats[match.winner.userName][match.winnerCharacter.key] = [
-          match.winnerCharacter,
-          0
-        ];
-      }
-      if (!characterStats[match.loser.userName][match.loserCharacter.key]) {
-        characterStats[match.loser.userName][match.loserCharacter.key] = [
-          match.loserCharacter,
-          0
-        ];
-      }
-      characterStats[match.winner.userName][match.winnerCharacter.key][1]++;
-      characterStats[match.loser.userName][match.loserCharacter.key][1]++;
 
     }
 
