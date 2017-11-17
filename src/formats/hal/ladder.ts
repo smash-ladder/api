@@ -24,6 +24,7 @@ export function model(ladder: Ladder) {
       },
       ranking: { href: '/ladders/' + ladder.key + '/rankings', title: 'Current player rankings' },
       matches: { href: '/ladders/' + ladder.key + '/matches', title: 'Previous matches' },
+      challenges: { href: '/ladders/' + ladder.key + '/challenges', title: 'Outstanding challenges' },
       allowedStages: ladder.allowedStages.map( stage => {
         return {
           href: '/games/' + stage.game.key + '/stages/' + stage.key,
