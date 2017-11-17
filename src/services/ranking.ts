@@ -93,11 +93,17 @@ export class RankingService {
         // no. Ignore this match.
         console.log('Invalid match', match);
         continue;
+
       }
 
       if (winnerPosition !== -1) {
+        // No change
+        if (winnerPosition < loserPosition) {
+          continue;
+        }
         // remove winner from existing position
         rankings.splice(winnerPosition, 1);
+
       }
 
       // Insert the winner.
