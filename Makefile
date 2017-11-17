@@ -12,7 +12,7 @@ docker-run:
 	  -e MYSQL_USER=hackdev \
 	  -e MYSQL_HOST=10.40.1.40 \
 	  -e MYSQL_DB=hackathon \
-	  -e SMTP_HOST=mailout.local.yelpcorp.com
+	  -e SMTP_HOST=mailout.local.yelpcorp.com \
 	  -p 3000:3000 --name smash-ladder-01 smash-ladder
 
 docker-restart:
