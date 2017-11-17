@@ -67,7 +67,7 @@ export class ChallengeService {
 
     challenge.id = result[0].insertId;
 
-    const smtpUrl = 'smtp://' + process.env.SMTP_HOST;
+    const smtpUrl = 'smtp://' + process.env.SMTP_HOST + ':25';
     console.log('create transport');
     const transporter = nodemailer.createTransport(smtpUrl);
     console.log('send challenge to ' + challenge.to.email);
