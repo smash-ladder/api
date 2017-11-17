@@ -17,7 +17,7 @@ export function collection(ladder: Ladder, rankings: Ranking[]) {
 
 export function model(ladder: Ladder, ranking: Ranking) {
 
-  const result = {
+  const result: any = {
     _links: {
       self: { href: '/ladders/' + ladder.key + '/rankings/' + ranking.player.userName },
       ladder: {
