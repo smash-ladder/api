@@ -1,10 +1,10 @@
 {
   "_links": {
-    "loser" : { "href": "/players/philippe" },
-    "loserCharacter" : { "href": "/games/ssb64/characters/ness" },
-    "winnerCharacter" : { "href": "/games/ssb64/characters/pikachu" },
-    "winner" : { "href": "/players/bkbarry" },
+    "winner" : { "href": "/players/philippe" },
+    "winnerCharacter" : { "href": "/games/ssb64/characters/ness" },
+    "loser" : { "href": "/players/evert" },
+    "loserCharacter" : { "href": "/games/ssb64/characters/pikachu" },
     "stage" : { "href": "/games/ssb64/stages/dream-land" }
   },
-  "livesLeft": 1 
+  "livesLeft": 4 
 }
