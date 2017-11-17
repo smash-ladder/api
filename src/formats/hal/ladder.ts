@@ -30,12 +30,13 @@ export function model(ladder: Ladder) {
           href: '/games/' + stage.game.key + '/stages/' + stage.key,
           title: stage.name
         };
-      })
+      }),
     },
     title: ladder.title,
     lives: ladder.lives,
     challengeRankingLimit: ladder.challengeRankingLimit,
-    algorithm: ladder.algorithm
+    algorithm: ladder.algorithm,
+    allowedItems: ladder.allowedItems
   };
 
 }

@@ -10,5 +10,6 @@ export interface Ladder {
   lives: number;
   challengeRankingLimit: number;
   algorithm: string;
+  allowedItems: string;
 
 }

@@ -20,6 +20,7 @@ export class LadderService {
         title: 'Super Smash Bros 64 1v1',
         game: game,
         allowedStages: [dreamLand, yoshisIsland],
+        allowedItems: 'All items, except Hammer, Maxim Tomato, Heart Container',
         lives: 5,
         challengeRankingLimit: 3,
         algorithm: 'bump'

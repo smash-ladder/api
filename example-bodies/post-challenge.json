@@ -1,0 +1,6 @@
+{
+  "_links": {
+    "to" : { "href": "/players/philippe" },
+    "from" : { "href": "/players/evert" }
+  }
+}

@@ -6,6 +6,7 @@ import { PlayerService } from './player';
 import { StageService } from './stage';
 import { CharacterService } from './character';
 import db from '../db';
+import * as nodemailer from 'nodemailer';
 
 export class ChallengeService {
 
@@ -65,6 +66,34 @@ export class ChallengeService {
     }]);
 
     challenge.id = result[0].insertId;
+
+    const smtpUrl = 'smtp://' + process.env.SMTP_HOST;
+    console.log('create transport');
+    const transporter = nodemailer.createTransport(smtpUrl);
+    console.log('send challenge to ' + challenge.to.email);
+    await transporter.sendMail({
+      from: 'smashmailer@dev14-uswest1cdevc.dev.yelpcorp.com',
+      to: challenge.to.email,
+      subject: 'You have been challenged by ' + challenge.from.userName + ' on the ' + challenge.ladder.title + ' ladder',
+      replyTo: challenge.from.email,
+      cc: challenge.from.email,
+      text: `Hi ${challenge.to.email},
+
+You have just been challenged by ${challenge.from.userName} to defend your position on
+the ${challenge.ladder.title} ladder.
+
+Arrange with ${challenge.from.userName} for a time to smash.
+
+Ladder: ${challenge.ladder.title}
+Rules:
+
+* Game: ${challenge.ladder.game.title}
+* ${challenge.ladder.lives} lives.
+* Allowed stages: ${(challenge.ladder.allowedStages.map( stage => stage.name )).join(', ')}
+* Ranking algorithm: ${challenge.ladder.algorithm}
+* Allowed items: ${challenge.ladder.allowedItems}
+`
+    });
 
   }
 
