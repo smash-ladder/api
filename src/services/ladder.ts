@@ -22,7 +22,7 @@ export class LadderService {
         allowedStages: [dreamLand],
         allowedItems: 'All items, except Hammer, Maxim Tomato, Heart Container',
         lives: 5,
-        challengeRankingLimit: 3,
+        challengeRankingLimit: 4,
         algorithm: 'bump'
       };
       return ladder;
