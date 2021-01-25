@@ -24,6 +24,18 @@ export class GameService {
         key: 'ssbm',
         title: 'Super Smash Bros. Melee'
       },
+      {
+        key: 'ssbb',
+        title: 'Super Smash Bros. Brawl'
+      },
+      {
+        key: 'ssb4',
+        title: 'Super Smash Bros. 4'
+      },
+      {
+        key: 'ssbu',
+        title: 'Super Smash Bros. Ultimate'
+      },
     ];
     return games;
 

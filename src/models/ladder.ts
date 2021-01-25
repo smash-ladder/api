@@ -6,7 +6,7 @@ export interface Ladder {
   key: string;
   title: string;
   game: Game;
-  allowedStages: Stage[];
+  allowedStages: Stage[] | string;
   lives: number;
   challengeRankingLimit: number;
   algorithm: string;
