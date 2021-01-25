@@ -326,7 +326,7 @@ export class CharacterService {
             };
           } else {
             return {
-              key: char.toLowerCase().replace(/\w/g, '-'),
+              key: char.toLowerCase().replace(/\W/g, '-'),
               name: char,
               game
             };
