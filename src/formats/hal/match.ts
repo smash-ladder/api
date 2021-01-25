@@ -17,7 +17,7 @@ export function collection(ladder: Ladder, matches: Match[]) {
 
 export function model(match: Match) {
 
-  return {
+  const result:any = {
     _links: {
       self: { href: '/ladders/' + match.ladder.key + '/match/' + match.id },
       ladder: { href: '/ladders/' + match.ladder.key },
@@ -37,13 +37,18 @@ export function model(match: Match) {
         href: '/games/' + match.ladder.game.key + '/characters/' + match.loserCharacter.key,
         title: match.loserCharacter.name
       },
-      stage: {
-        href: '/games/' + match.ladder.game.key + '/stages/' + match.stage.key,
-        title: match.stage.name
-      },
     },
     livesLeft: match.livesLeft,
     createdAt: match.createdAt
   };
+
+  if (match.stage) {
+    result._links.stage = {
+      href: '/games/' + match.ladder.game.key + '/stages/' + match.stage.key,
+      title: match.stage.name
+    };
+  }
+
+  return result;
 
 }

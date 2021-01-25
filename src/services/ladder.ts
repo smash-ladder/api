@@ -6,26 +6,42 @@ import { GameService } from './game';
 export class LadderService {
 
   getByKey(key: string): Ladder {
-    if (key === 'ssb64-1v1') {
 
-      const gameService = new GameService();
-      const stageService = new StageService();
+    const gameService = new GameService();
+    const stageService = new StageService();
 
-      const game = gameService.getByKey('ssb64');
-      const dreamLand = stageService.getByGameAndKey(game, 'dream-land');
-      const yoshisIsland = stageService.getByGameAndKey(game, 'yoshis-island');
+    switch (key) {
+      case 'ssb64-1v1' : {
+        const game = gameService.getByKey('ssb64');
+        const dreamLand = stageService.getByGameAndKey(game, 'dream-land');
+        const yoshisIsland = stageService.getByGameAndKey(game, 'yoshis-island');
 
-      const ladder: Ladder = {
-        key: 'ssb64-1v1',
-        title: 'Super Smash Bros 64 1v1',
-        game: game,
-        allowedStages: [dreamLand],
-        allowedItems: 'All items, except Hammer, Maxim Tomato, Heart Container',
-        lives: 5,
-        challengeRankingLimit: 4,
-        algorithm: 'bump'
-      };
-      return ladder;
+        const ladder: Ladder = {
+          key,
+          title: 'Super Smash Bros 64 1v1',
+          game: game,
+          allowedStages: [dreamLand],
+          allowedItems: 'All items, except Hammer, Maxim Tomato, Heart Container',
+          lives: 5,
+          challengeRankingLimit: 4,
+          algorithm: 'bump'
+        };
+        return ladder;
+      }
+      case 'ssbu-2021' : {
+        const game = gameService.getByKey('ssbu');
+        const ladder: Ladder = {
+          key,
+          title: 'Super Smash Bros Ultimate 2021',
+          game,
+          allowedStages: 'Any battlefield',
+          allowedItems: 'none',
+          lives: 3,
+          challengeRankingLimit: 2,
+          algorithm: 'bump'
+        };
+        return ladder;
+      }
     }
 
     throw new NotFoundError('No such ladder');
@@ -34,7 +50,10 @@ export class LadderService {
 
   getAll(): Ladder[] {
 
-    return [this.getByKey('ssb64-1v1')];
+    return [
+      this.getByKey('ssb64-1v1'),
+      this.getByKey('ssbu-2021')
+    ];
 
   }
 

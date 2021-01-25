@@ -23,16 +23,12 @@ export class MatchService {
 
   async getByLadder(ladder: Ladder): Promise<Match[]> {
 
-    if (ladder.key !== 'ssb64-1v1') {
-      return [];
-    }
-
     const playerService = new PlayerService();
     const characterService = new CharacterService();
     const stageService = new StageService();
 
     const query = `
-      SELECT * FROM smash_match WHERE ladder_id = ? ORDER BY created
+      SELECT * FROM smash_match WHERE ladder_id = ? ORDER BY created_at
     `;
 
     const result = await db.query(query, [ladder.key]);
@@ -48,7 +44,7 @@ export class MatchService {
         loser: await playerService.getById(row.loser_id),
         winnerCharacter: await characterService.getByGameAndKey(ladder.game, row.winner_character),
         loserCharacter: await characterService.getByGameAndKey(ladder.game, row.loser_character),
-        stage: await stageService.getByGameAndKey(ladder.game, row.stage),
+        stage: row.stage ? await stageService.getByGameAndKey(ladder.game, row.stage) : null,
         livesLeft: row.lives_left
       });
 

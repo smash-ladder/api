@@ -32,7 +32,7 @@ CREATE TABLE smash_match (
   winner_id INT UNSIGNED NOT NULL,
   loser_id INT UNSIGNED NOT NULL,
   lives_left INT UNSIGNED NOT NULL,
-  stage VARCHAR(50) NOT NULL,
+  stage VARCHAR(50) NULL,
   winner_character VARCHAR(50) NOT NULL,
   loser_character VARCHAR(50) NOT NULL
 );
