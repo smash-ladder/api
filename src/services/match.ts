@@ -42,14 +42,14 @@ export class MatchService {
 
       matches.push({
         id: row.id,
-        created: new Date(row.created * 1000),
+        createdAt: new Date(row.created_at * 1000),
         ladder: ladder,
         winner: await playerService.getById(row.winner_id),
         loser: await playerService.getById(row.loser_id),
         winnerCharacter: await characterService.getByGameAndKey(ladder.game, row.winner_character),
         loserCharacter: await characterService.getByGameAndKey(ladder.game, row.loser_character),
         stage: await stageService.getByGameAndKey(ladder.game, row.stage),
-        livesLeft: row.livesLeft
+        livesLeft: row.lives_left
       });
 
     }
@@ -62,7 +62,7 @@ export class MatchService {
 
     const query = `
       INSERT INTO smash_match SET
-        created = UNIX_TIMESTAMP(),
+        created_at = UNIX_TIMESTAMP(),
         ?
       `;
 
@@ -70,7 +70,7 @@ export class MatchService {
       ladder_id: match.ladder.key,
       winner_id: match.winner.id,
       loser_id: match.loser.id,
-      livesLeft: match.livesLeft,
+      lives_left: match.livesLeft,
       stage: match.stage.key,
       winner_character: match.winnerCharacter.key,
       loser_character: match.loserCharacter.key

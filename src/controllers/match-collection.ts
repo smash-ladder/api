@@ -40,7 +40,7 @@ export class MatchCollectionController extends BaseController {
 
     const match: Match = {
       id: undefined,
-      created: undefined,
+      createdAt: undefined,
       ladder: ladder,
       winner: winner,
       winnerCharacter: winnerCharacter,

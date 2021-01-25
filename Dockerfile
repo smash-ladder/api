@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:12
 
 RUN mkdir /opt/www
 WORKDIR /opt/www

@@ -16,7 +16,7 @@ export function home() {
         title: 'List of players'
       }
     },
-    about: 'Welcome to the Yelp Smash Ladder API!',
+    about: 'Bad Gateway Smash Laddder API',
     version: require('../../../package.json').version
   };
 

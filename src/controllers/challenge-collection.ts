@@ -35,7 +35,7 @@ export class ChallengeCollectionController extends BaseController {
 
     const challenge: Challenge = {
       id: undefined,
-      created: undefined,
+      createdAt: undefined,
       ladder: ladder,
       from: from,
       to: to

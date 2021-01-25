@@ -36,7 +36,7 @@ export function model(challenge: Challenge) {
         title: challenge.to.name
       }
     },
-    created: challenge.created
+    created: challenge.createdAt
   };
 
 }

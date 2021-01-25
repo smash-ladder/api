@@ -26,7 +26,7 @@ async function errorMiddleware(ctx: Context, next: Function) {
     if (err instanceof APIError) {
 
       errorBody = {
-        type: 'https://api.yelpwifi.com/errors/' + err.type,
+        type: 'https://api.badgateway.com/errors/' + err.type,
         status: err.status,
         title: err.title,
         detail: err.detail
@@ -36,7 +36,7 @@ async function errorMiddleware(ctx: Context, next: Function) {
 
       console.log(err);
       errorBody = {
-        type: 'https://api.yelpwifi.com/errors/internal-server-error',
+        type: 'https://api.badgateway.com/errors/internal-server-error',
         status: 500,
         title: 'Internal server error',
         detail: err.message

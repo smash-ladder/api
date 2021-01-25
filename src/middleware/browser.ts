@@ -99,7 +99,7 @@ const renderBrowser = function(ctx: Context) {
   const template = `<!DOCTYPE html>
 <html>
 <head>
-  <title>Yelp Smash API</title>
+  <title>Bad Gateway Smash API</title>
   <style>${assets.css}</style>
   <style>${assets.highlight}</style>
 </head>
