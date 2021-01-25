@@ -30,9 +30,6 @@ export class LadderService {
       }
       case 'ssbu-2021' : {
         const game = gameService.getByKey('ssbu');
-        const dreamLand = stageService.getByGameAndKey(game, 'dream-land');
-        const yoshisIsland = stageService.getByGameAndKey(game, 'yoshis-island');
-
         const ladder: Ladder = {
           key: 'ssb64-1v1',
           title: 'Super Smash Bros 64 1v1',
