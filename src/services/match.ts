@@ -32,7 +32,7 @@ export class MatchService {
     const stageService = new StageService();
 
     const query = `
-      SELECT * FROM smash_match WHERE ladder_id = ? ORDER BY created
+      SELECT * FROM smash_match WHERE ladder_id = ? ORDER BY created_at
     `;
 
     const result = await db.query(query, [ladder.key]);

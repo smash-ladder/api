@@ -29,7 +29,7 @@ export class ChallengeService {
     const stageService = new StageService();
 
     const query = `
-      SELECT * FROM smash_challenge WHERE ladder_id = ? ORDER BY created
+      SELECT * FROM smash_challenge WHERE ladder_id = ? ORDER BY created_at
     `;
 
     const result = await db.query(query, [ladder.key]);
