@@ -23,10 +23,6 @@ export class MatchService {
 
   async getByLadder(ladder: Ladder): Promise<Match[]> {
 
-    if (ladder.key !== 'ssb64-1v1') {
-      return [];
-    }
-
     const playerService = new PlayerService();
     const characterService = new CharacterService();
     const stageService = new StageService();
