@@ -1,6 +1,6 @@
 {
   "name": "smash-back",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "API for smash ladder",
   "main": "index.js",
   "scripts": {
