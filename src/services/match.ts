@@ -44,7 +44,7 @@ export class MatchService {
         loser: await playerService.getById(row.loser_id),
         winnerCharacter: await characterService.getByGameAndKey(ladder.game, row.winner_character),
         loserCharacter: await characterService.getByGameAndKey(ladder.game, row.loser_character),
-        stage: await stageService.getByGameAndKey(ladder.game, row.stage),
+        stage: row.stage ? await stageService.getByGameAndKey(ladder.game, row.stage) : null,
         livesLeft: row.lives_left
       });
 

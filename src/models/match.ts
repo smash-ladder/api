@@ -15,7 +15,7 @@ export interface Match {
 
   winnerCharacter: Character;
   loserCharacter: Character;
-  stage: Stage;
+  stage: Stage | null;
 
   livesLeft: number;
 
