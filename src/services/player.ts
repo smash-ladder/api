@@ -10,13 +10,7 @@ export class PlayerService {
       player.userName === userName
     );
     if (typeof player === 'undefined') {
-      player = {
-        id: undefined,
-        name: undefined,
-        userName: userName,
-        email: userName + '@yelp.com'
-      };
-      await this.save(player);
+      throw new Error('Player not found');
     }
     return player;
 

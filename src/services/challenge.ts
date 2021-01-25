@@ -39,7 +39,7 @@ export class ChallengeService {
 
       challenges.push({
         id: row.id,
-        created: new Date(row.created * 1000),
+        createdAt: new Date(row.created_at * 1000),
         ladder: ladder,
         from: await playerService.getById(row.from_id),
         to: await playerService.getById(row.to_id)
@@ -55,7 +55,7 @@ export class ChallengeService {
 
     const query = `
       INSERT INTO smash_challenge SET
-        created = UNIX_TIMESTAMP(),
+        created_at = UNIX_TIMESTAMP(),
         ?
       `;
 
@@ -72,7 +72,7 @@ export class ChallengeService {
     const transporter = nodemailer.createTransport(smtpUrl);
     console.log('send challenge to ' + challenge.to.email);
     await transporter.sendMail({
-      from: 'smashmailer@dev14-uswest1cdevc.dev.yelpcorp.com',
+      from: 'smashmailer@badgateway.net',
       to: challenge.to.email,
       subject: 'You have been challenged by ' + challenge.from.userName + ' on the ' + challenge.ladder.title + ' ladder',
       replyTo: challenge.from.email,

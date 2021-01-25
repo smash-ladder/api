@@ -43,7 +43,7 @@ export function model(match: Match) {
       },
     },
     livesLeft: match.livesLeft,
-    created: match.created
+    createdAt: match.createdAt
   };
 
 }

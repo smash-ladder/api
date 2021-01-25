@@ -4,7 +4,7 @@ import { Ladder } from './ladder';
 export interface Challenge {
 
   id: number;
-  created: Date;
+  createdAt: Date;
 
   ladder: Ladder;
 

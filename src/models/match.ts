@@ -6,7 +6,7 @@ import { Character } from './character';
 export interface Match {
 
   id: number;
-  created: Date;
+  createdAt: Date;
 
   ladder: Ladder;
 
