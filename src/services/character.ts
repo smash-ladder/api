@@ -3,6 +3,90 @@ import { GameService } from './game';
 import { Character } from '../models/character';
 import { NotFoundError } from '../errors';
 
+const ssbuChars = [
+  'Mario',
+  'Donkey Kong',
+  'Link',
+  'Samus',
+  'Dark Samus',
+  'Yoshi',
+  'Kirby',
+  'Fox',
+  'Pikachu',
+  'Luigi',
+  'Ness',
+  'Captain Falcon',
+  'Jigglypuff',
+  'Peach',
+  'Daisy',
+  'Bowser',
+  'Ice Climbers',
+  'Sheik',
+  'Zelda',
+  ['Dr. Mario', 'dr-mario'],
+  'Pichu',
+  'Falco',
+  'Marth',
+  'Lucina',
+  'Young Link',
+  'Ganondorf',
+  'Mewtwo',
+  'Roy',
+  'Chrom',
+  ['Mr. Game & Watch', 'game-and-watch'],
+  'Meta Knight',
+  'Pit',
+  'Dark Pit',
+  'Zero Suit Samus',
+  'Wario',
+  'Snake',
+  'Ike',
+  ['Pokémon Trainer', 'pokemon-trainer'],
+  'Diddy Kong',
+  'Lucas',
+  'Sonic',
+  'King Dedede',
+  'Olimar',
+  'Lucario',
+  ['R.O.B.', 'rob'],
+  'Toon Link',
+  'Wolf',
+  'Villager',
+  'Mega Man',
+  'Wii Fit Trainer',
+  ['Rosalina & Luma', 'rosalina'],
+  'Little Mac',
+  'Mii Fighter',
+  'Palutena',
+  'Pac-Man',
+  'Robin',
+  'Shulk',
+  ['Bowser Jr.', 'bowser-jr'],
+  'Duck Hunt',
+  'Ryu',
+  'Ken',
+  'Cloud',
+  'Corrin',
+  'Bayonetta',
+  'Inklin',
+  'Ridley',
+  'Simon',
+  'Richter',
+  ['King K. Rool', 'king-k-rool'],
+  'Isabelle',
+  'Incineroar',
+  'Piranha Plant',
+  'Joker',
+  'Hero',
+  ['Banjo & Kazooie', 'banjo-kazooie'],
+  'Terry',
+  'Byleth',
+  'Min min',
+  ['Steve / Alex', 'steve-alex'],
+  'Sephiroth',
+];
+
+
 export class CharacterService {
 
   getByUri(uri: string): Character {
@@ -231,6 +315,23 @@ export class CharacterService {
             game: game
           },
         ];
+        break;
+      case 'ssbu' :
+        characters = ssbuChars.map( char => {
+          if (Array.isArray(char)) {
+            return {
+              key: char[1],
+              name: char[0],
+              game
+            };
+          } else {
+            return {
+              key: char.toLowerCase().replace(/\w/g, '-'),
+              name: char,
+              game
+            };
+          }
+        });
         break;
     }
 
