@@ -17,7 +17,7 @@ export function collection(ladder: Ladder, matches: Match[]) {
 
 export function model(match: Match) {
 
-  const result:any = {
+  const result: any = {
     _links: {
       self: { href: '/ladders/' + match.ladder.key + '/match/' + match.id },
       ladder: { href: '/ladders/' + match.ladder.key },
