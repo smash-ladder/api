@@ -36,7 +36,7 @@ export class PlayerService {
     const player: Player = {
       id: result[0][0].id,
       name: result[0][0].name,
-      userName: result[0][0].userName,
+      userName: result[0][0].username,
       email: result[0][0].email
     };
     return player;
@@ -55,7 +55,7 @@ export class PlayerService {
       players.push({
         id: row.id,
         name: row.name,
-        userName: row.userName,
+        userName: row.username,
         email: row.email
       });
 
