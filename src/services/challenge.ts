@@ -71,6 +71,12 @@ export class ChallengeService {
     console.log('create transport');
     const transporter = nodemailer.createTransport(smtpUrl);
     console.log('send challenge to ' + challenge.to.email);
+
+    const allowedStagesString =
+      Array.isArray(challenge.ladder.allowedStages) ?
+      challenge.ladder.allowedStages.map( stage => stage.name ).join(', ') :
+      challenge.ladder.allowedStages;
+
     await transporter.sendMail({
       from: 'smashmailer@badgateway.net',
       to: challenge.to.email,
@@ -89,7 +95,7 @@ Rules:
 
 * Game: ${challenge.ladder.game.title}
 * ${challenge.ladder.lives} lives.
-* Allowed stages: ${(challenge.ladder.allowedStages.map( stage => stage.name )).join(', ')}
+* Allowed stages: ${allowedStagesString}
 * Ranking algorithm: ${challenge.ladder.algorithm}
 * Allowed items: ${challenge.ladder.allowedItems}
 `
