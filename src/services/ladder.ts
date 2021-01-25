@@ -17,7 +17,7 @@ export class LadderService {
         const yoshisIsland = stageService.getByGameAndKey(game, 'yoshis-island');
 
         const ladder: Ladder = {
-          key: 'ssb64-1v1',
+          key,
           title: 'Super Smash Bros 64 1v1',
           game: game,
           allowedStages: [dreamLand],
@@ -31,8 +31,8 @@ export class LadderService {
       case 'ssbu-2021' : {
         const game = gameService.getByKey('ssbu');
         const ladder: Ladder = {
-          key: 'ssb64-1v1',
-          title: 'Super Smash Bros 64 1v1',
+          key,
+          title: 'Super Smash Bros Ultimate 2021',
           game,
           allowedStages: 'Any battlefield',
           allowedItems: 'none',
