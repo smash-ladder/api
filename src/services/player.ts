@@ -6,7 +6,7 @@ export class PlayerService {
 
   async getByUserName(userName: string): Promise<Player> {
 
-    let player = (await this.getAll()).find( player =>
+    const player = (await this.getAll()).find( player =>
       player.userName === userName
     );
     if (typeof player === 'undefined') {

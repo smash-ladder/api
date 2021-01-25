@@ -1,5 +1,5 @@
 {
-  "name": "smash-back",
+  "name": "@badgateway/smash-api",
   "version": "2.0.0",
   "description": "API for smash ladder",
   "main": "index.js",
