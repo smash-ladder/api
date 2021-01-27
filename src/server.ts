@@ -10,9 +10,9 @@ const app = new Koa();
 app.use((ctx: Koa.Context, next: Function) => {
 
   ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,HEAD');
-  ctx.set('Access-Control-Allow-Headers', 'Content-Type,Access,User-Agent');
-  ctx.set('Access-Control-Expose-Headers', 'Content-Type');
+  ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,HEAD,PATCH');
+  ctx.set('Access-Control-Allow-Headers', 'Content-Type,Accept,User-Agent,Authorization,Prefer,Prefer-Push,Link');
+  ctx.set('Access-Control-Expose-Headers', 'Content-Type,Link,Location');
 
   if (ctx.method === 'OPTIONS') {
     ctx.status = 204;
