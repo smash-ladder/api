@@ -59,7 +59,7 @@ export default async function(ctx: Context, next: Function) {
 
   }
 
-  if (ctx.accepts(['json','text/html'])!=='text/html') {
+  if (ctx.accepts(['json', 'text/html']) !== 'text/html') {
     // We're only interested in browsers
     return next();
 
