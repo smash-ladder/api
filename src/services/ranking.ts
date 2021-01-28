@@ -170,12 +170,14 @@ export class RankingService {
         }
       }
       ranking.favoriteCharacter = fav;
+      ranking.wins = 0;
+      ranking.losses = 0;
 
       for (const match of matches) {
-        if (match.loser === ranking.player) {
+        if (match.loser.id === ranking.player.id) {
           ranking.losses++;
         }
-        if (match.winner === ranking.player) {
+        if (match.winner.id === ranking.player.id) {
           ranking.wins++;
         }
       }
