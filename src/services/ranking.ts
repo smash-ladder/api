@@ -104,12 +104,10 @@ export class RankingService {
           player: match.loser,
           rank: 0,
           favoriteCharacter: undefined,
-          losses: 1,
+          losses: 0,
           wins: 0
         });
         loserPosition = rankings.length - 1;
-      } else {
-        rankings[loserPosition].losses++;
       }
 
       // Was the winner allowed to challenge the loser?
@@ -145,7 +143,7 @@ export class RankingService {
           player: match.winner,
           rank: 0,
           favoriteCharacter: undefined,
-          wins: 1,
+          wins: 0,
           losses: 0
         };
 
@@ -172,6 +170,15 @@ export class RankingService {
         }
       }
       ranking.favoriteCharacter = fav;
+
+      for (const match of matches) {
+        if (match.loser === ranking.player) {
+          ranking.losses++;
+        }
+        if (match.winner === ranking.player) {
+          ranking.wins++;
+        }
+      }
 
     }
     return rankings;
