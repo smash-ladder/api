@@ -28,7 +28,8 @@ export function model(character: Character): any {
         title: character.game.title
       }
     },
-    name: character.name
+    name: character.name,
+    key: character.key,
   };
 
 }
