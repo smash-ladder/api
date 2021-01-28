@@ -179,6 +179,7 @@ export class RankingService {
           ranking.wins++;
         }
       }
+      console.log(ranking);
 
     }
     return rankings;
