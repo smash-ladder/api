@@ -56,6 +56,7 @@ const ssbuChars = [
   'Wii Fit Trainer',
   ['Rosalina & Luma', 'rosalina'],
   'Little Mac',
+  'Greninja',
   'Mii Fighter',
   'Palutena',
   'Pac-Man',
